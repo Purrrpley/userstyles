@@ -1,0 +1,116 @@
+/* ==UserStyle==
+@name Colourised Autcraft
+@namespace github.com/Purrrpley/userstyles
+@version 1.0.0
+@description Changes the accent colour on the Autcraft website
+@author Purrrpley
+@homepageURL https://github.com/Purrrpley/userstyles
+@supportURL https://github.com/Purrrpley/userstyles/issues
+@license MIT
+@preprocessor stylus
+@var color selected-color "Selected Colour" #B064AA
+==/UserStyle== */
+
+@-moz-document domain("autcraft.com")
+  $colorised = selected-color
+  $colorised-dark = darken($colorised, 20%)
+  $colorised-light = lighten($colorised, 40%)
+  $colorised-lighter = lighten($colorised, 80%)
+  
+  contrast-color(bottom, top = white)
+    contrast(bottom, blend(top, bottom)).ratio < 1.8 ? invert(top) : top
+
+  bg-color(color)
+    border-color color !important
+    background-color color !important
+    color contrast-color(color) !important
+
+  // Buttons
+  .ui.button
+    &.primary
+    &.blue
+      &:hover
+        bg-color($colorised)
+      &:focus
+      &:active
+        bg-color($colorised-dark)
+
+  // Header nav bar thing
+  #navbar
+    background-color $colorised !important
+    > div > a
+      color contrast-color($colorised, alpha(white, 0.6)) !important
+      &:hover
+        color contrast-color(blend(alpha(white, 0.08), $colorised), alpha(white, 0.6)) !important
+      &.active
+        color contrast-color(blend(alpha(black, 0.1), $colorised)) !important
+
+  // Footer links
+  #footer
+  .footer
+    a
+      color $colorised !important
+      &:hover
+        color $colorised-light !important
+        text-decoration-line none !important
+
+  // StaffCP buttons
+  .btn-primary
+    bg-color($colorised)
+    &:hover
+      bg-color($colorised-dark)
+    &:focus
+      box-shadow: 0 0 0 .2rem alpha($colorised, 0.5) !important
+
+  // StaffCP dark mode toggle
+  .custom-control-input
+    ~ .custom-control-label
+      // Background thing
+      &::before
+        border-color $colorised !important
+        ^[0]:checked ^[1..-1]
+          bg-color($colorised)
+        ^[0]:active ^[1..-1]
+          bg-color($colorised-lighter)
+        ^[0]:focus ^[1..-1]
+          box-shadow 0 0 0 .2rem alpha($colorised, 0.4)
+      // Nob thing
+      &::after
+        ^[0]:not(:checked) ^[1..-1]
+          bg-color($colorised)
+        ^[0]:checked ^[1..-1]
+          bg-color contrast-color($colorised)
+
+  // StaffCP light mode backgrounds
+  html:not(.dark)
+    .bg-primary
+      bg-color($colorised)
+      *
+        color contrast-color($colorised) !important
+    .sidebar
+      background-image linear-gradient(180deg, $colorised 10%, $colorised-dark 100%)
+      .sidebar-brand-text
+        color contrast-color($colorised) !important
+      .sidebar-heading
+        color alpha(contrast-color($colorised), 0.4) !important
+      .nav-item
+        &:not(.active)
+          .nav-link
+            span
+              color alpha(contrast-color($colorised), 0.8) !important
+            i
+              color alpha(contrast-color($colorised), 0.3) !important
+            &:hover *
+              color contrast-color($colorised) !important
+        &.active *
+          color contrast-color($colorised) !important
+    #sidebarToggle::after
+      color alpha(contrast-color($colorised), 0.5) !important
+
+  // StaffCP left border accent
+  .border-left-primary
+    border-color $colorised !important
+
+  .text-primary  // StaffCP text
+  .breadcrumb-item > a  // Breadcrum text
+    color $colorised !important
