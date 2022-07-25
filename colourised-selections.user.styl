@@ -1,0 +1,22 @@
+/* ==UserStyle==
+@name Colourised Selections
+@namespace github.com/Purrrpley/userstyles
+@version 1.0.0
+@description Changes the colour of selections on (almost) all websites
+@author Purrrpley
+@homepageURL https://github.com/Purrrpley/userstyles
+@supportURL https://github.com/Purrrpley/userstyles/issues
+@license MIT
+@preprocessor stylus
+@var checkbox change-background "Change Background" 1
+@var color selection-background "Selection Background" #B064AA
+@var checkbox change-text "Change Text" 1
+@var color selection-text "Selection Text" #FFF
+==/UserStyle== */
+
+@-mox-document regexp(".*")  // Apply everywhere
+	::selection
+    if change-background
+      background-color selection-background !important
+    if change-text
+      color selection-text !important
