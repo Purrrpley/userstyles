@@ -1,0 +1,62 @@
+/* ==UserStyle==
+@name Colourised NameMC
+@namespace github.com/Purrrpley/userstyles
+@version 1.0.0
+@description Changes the colour of links and things on NameMC
+@author Purrrpley
+@homepageURL https://github.com/Purrrpley/userstyles
+@supportURL https://github.com/Purrrpley/userstyles/issues
+@license MIT
+@preprocessor stylus
+@var color selected-color "Selected Colour" #B064AA
+==/UserStyle== */
+
+@-moz-document domain("namemc.com")
+  $colorised = selected-color
+  $colorised-dark = darken($colorised, 20%)
+  $colorised-light = lighten($colorised, 20%)
+  
+  // Links
+  a
+    color: $colorised
+    &:hover
+      color: $colorised-light
+  
+  // Bottom border for things like the "Followers" tab
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active
+    border-bottom-color: $colorised
+  
+  // Search bar
+  .input-group:not(.input-group-alt).focus
+    border-color: $colorised
+    box-shadow: 0 0 0 1px $colorised
+  
+  // Nav link buttons
+  .nav-link:focus, .nav-link:hover, .nav-link.active
+    color: $colorised
+
+  // Buttons
+  .nav-pills .nav-link.active, .nav-pills .show > .nav-link
+    background-color: $colorised
+  .btn-primary
+    background-color: $colorised
+    border-color: $colorised
+    &:hover
+      background-color: $colorised-dark
+      border-color: $colorised-dark
+  .btn-secondary.focus, .btn-secondary:focus
+    border-color: $colorised
+  
+  // Country selector
+  .form-control:focus
+    border-color: $colorised
+    box-shadow: 0 0 0 1px $colorised
+  
+  // Skin page things
+  .page-item.active .page-link
+  .page-link:hover
+    color: $colorised-dark
+    background-color: alpha($colorised, 12%)
+  .page-link:focus
+    color: $colorised-dark
+    box-shadow: inset 0 0 0 4px alpha($colorised, 12%)
