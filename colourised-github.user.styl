@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name Colourised GitHub
 @namespace github.com/Purrrpley/userstyles
-@version 1.0.0
+@version 1.0.1
 @description Changes the accent colour on GitHub
 @author Purrrpley
 @homepageURL https://github.com/Purrrpley/userstyles
@@ -20,39 +20,39 @@
   $colorised-light2 = lighten($colorised, 40%)
   
   :root
-    --color-accent-fg $colorised !important  // Main #58a6ff
-    --color-accent-muted alpha($colorised-dark1, 0.4) !important  // Background outlines, like for your own issue comments
-    --color-accent-subtle alpha($colorised-dark1, 0.15) !important  // Backgrounds
-    --color-accent-emphasis $colorised-dark1 !important  // Selected toggles like for the issue categories, and some hover things like the profile settings dropdown
-    --color-btn-primary-bg $colorised !important  // Primary buttons
-    --color-btn-primary-hover-bg $colorised-light1 !important  // Primary buttons hovering
-    --color-btn-primary-selected-bg $colorised !important  // Primary buttons selected
-    --color-primer-border-active $colorised-light1 !important  // Border for things like selected tabs
-    --color-btn-outline-text $colorised !important  // Buttons that have coloured text, like commit hashes
-    --color-btn-outline-hover-text $colorised !important  // Buttons that have coloured text when hovered
-    --color-btn-outline-selected-bg $colorised-dark1 !important  // Buttons that have coloured text when clicked
-    --color-btn-outline-disabled-text alpha($colorised-light1, 0.5) !important  // Buttons that have coloured text that are disabled, like the "Older" and "Newwer" buttons at the bottom of commit history searches
-    --color-diff-blob-hunk-num-bg alpha($colorised-light1, 0.4) !important  // Diff hunks line expander thing when not hovered
-    --color-social-reaction-bg-reacted-hover $colorised-dark3 !important  // Background of issue/PR comment reactions made by you when hovered over
+    --color-accent-fg: $colorised !important  // Main #58a6ff
+    --color-accent-muted: alpha($colorised-dark1, 0.4) !important  // Background outlines, like for your own issue comments
+    --color-accent-subtle: alpha($colorised-dark1, 0.15) !important  // Backgrounds
+    --color-accent-emphasis: $colorised-dark1 !important  // Selected toggles like for the issue categories, and some hover things like the profile settings dropdown
+    --color-btn-primary-bg: $colorised !important  // Primary buttons
+    --color-btn-primary-hover-bg: $colorised-light1 !important  // Primary buttons hovering
+    --color-btn-primary-selected-bg: $colorised !important  // Primary buttons selected
+    --color-primer-border-active: $colorised-light1 !important  // Border for things like selected tabs
+    --color-btn-outline-text: $colorised !important  // Buttons that have coloured text, like commit hashes
+    --color-btn-outline-hover-text: $colorised !important  // Buttons that have coloured text when hovered
+    --color-btn-outline-selected-bg: $colorised-dark1 !important  // Buttons that have coloured text when clicked
+    --color-btn-outline-disabled-text: alpha($colorised-light1, 0.5) !important  // Buttons that have coloured text that are disabled, like the "Older" and "Newwer" buttons at the bottom of commit history searches
+    --color-diff-blob-hunk-num-bg: alpha($colorised-light1, 0.4) !important  // Diff hunks line expander thing when not hovered
+    --color-social-reaction-bg-reacted-hover: $colorised-dark3 !important  // Background of issue/PR comment reactions made by you when hovered over
     // Contributions calandar thing
-    --color-calendar-graph-day-L1-bg $colorised-dark3 !important
-    --color-calendar-graph-day-L2-bg $colorised-dark2 !important
-    --color-calendar-graph-day-L3-bg $colorised !important
-    --color-calendar-graph-day-L4-bg $colorised-light2 !important
+    --color-calendar-graph-day-L1-bg: $colorised-dark3 !important
+    --color-calendar-graph-day-L2-bg: $colorised-dark2 !important
+    --color-calendar-graph-day-L3-bg: $colorised !important
+    --color-calendar-graph-day-L4-bg: $colorised-light2 !important
   
   // Inputs in things like setttings
   input[type=checkbox], input[type=radio]
-      accent-color var(--color-accent-fg) !important
+    accent-color: var(--color-accent-fg) !important
   
   // Loading progress bar at the top of the page
   .turbo-progress-bar
-      background-color $colorised-dark1 !important
+    background-color: $colorised-dark1 !important
   
   // Activity overview graph highlight thing
-  .js-highlight-blob
-    fill $colorised !important
-    stroke $colorised !important
+  .js-activity-overview-graph .js-highlight-blob
+    fill: $colorised !important
+    stroke: $colorised !important
   
   // Contribution activity progress bar things. They are different colours based on how long they are, so their hue is rotated by the hue of the selected colour minus the default colour to keep the brightness and relative hue the same.
-  .Progress-item
-    filter hue-rotate(hue($colorised) - 136deg)
+  .contribution-activity-listing .Progress-item
+    filter: hue-rotate(hue($colorised) - 136deg)
