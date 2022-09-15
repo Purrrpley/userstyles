@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name Colourised NameMC
 @namespace github.com/Purrrpley/userstyles
-@version 1.0.0
+@version 1.0.1
 @description Changes the colour of links and things on NameMC
 @author Purrrpley
 @homepageURL https://github.com/Purrrpley/userstyles
@@ -60,3 +60,8 @@
   .page-link:focus
     color: $colorised-dark
     box-shadow: inset 0 0 0 4px alpha($colorised, 12%)
+
+// Make my (Purrrpley's) heading name thing be purple because I wrote this, so I can do this :D
+@-moz-document regexp('https?://namemc\\.com/profile/Purrrpley(\\.\\d+)?')
+  h1.text-nowrap
+    color: #B064AA
