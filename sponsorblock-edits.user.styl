@@ -1,0 +1,67 @@
+/* ==UserStyle==
+@name SponsorBlock Edits
+@namespace github.com/Purrrpley/userstyles
+@version 1.0.0
+@description Some edits to the SponsorBlock submission box
+@author Purrrpley
+@homepageURL https://github.com/Purrrpley/userstyles
+@supportURL https://github.com/Purrrpley/userstyles/issues
+@license MIT
+@preprocessor stylus
+@var color selected-color "Border Colour" #B064AA
+@var checkbox rainbow-mode "Rainbow Mode" 0
+@var number rainbow-duration "Rainbow Duration" ['s', 20]
+==/UserStyle== */
+
+@-moz-document domain("youtube.com")
+  $colorised = selected-color
+  
+  // Rainbow mode
+  if rainbow-mode
+    // Mixin for easy applying of different keyframes
+    animate-rainbow(keyframes...)
+      $result = ''
+      for name in keyframes
+        $result += '%s convert(%s) linear infinite, ' % (rainbow-duration name)
+      $result = substr($result, 0, (length($result)) - 2)
+      animation: convert($result)
+    
+    // Function to generate rainbow mode keyframes
+    rainbowMode(property, expression)
+      for i in 0..4
+        {i*25%}
+          add-property(property, convert(expression))
+    
+    // Keyframes
+    @keyframes rainbowModeBorder
+      rainbowMode('border-color', 'alpha(spin(red, i*90deg), 90%)')
+    @keyframes rainbowModeFilter
+      rainbowMode('filter', 'hue-rotate(i*90deg)')
+    @keyframes rainbowModeColor
+      rainbowMode('color', 'hsl(i*90deg, 100%, 90%)')
+    @keyframes rainbowModeBackground
+      rainbowMode('background', 'alpha(spin(red, i*90deg), 15%)')
+  
+  // Less obstructive submissions box
+  $submission-box-bg = rgb(28, 28, 28)
+  .sponsorSkipNoticeTableContainer
+    background-color: alpha($submission-box-bg, 50%) !important
+  
+  // User input areas
+  .sponsorTimeEditInput
+  .sponsorTimeEditSelector
+    // Better font in user input areas
+    font-family: inherit !important
+    if rainbow-mode
+      animate-rainbow(rainbowModeBorder, rainbowModeColor, rainbowModeBackground)
+    else
+      // 60% over 50% is 80%... Dark enough to make it easier to read, but not too dark that it blocks too much.
+      background: alpha($submission-box-bg, 60%) !important
+      border-color: alpha($colorised, 90%) !important
+  
+  // Colourised logo
+  #sponsorSkipLogoSubmissionNotice
+    if rainbow-mode
+      animate-rainbow(rainbowModeFilter)
+    else
+      filter: hue-rotate(hue($colorised) - hue(#ff0000)) !important
